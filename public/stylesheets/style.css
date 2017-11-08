@@ -1,0 +1,103 @@
+:root{
+  --first-color: #E1F5C4;
+  --second-color: #EDE574;
+  --third-color: #F9D423;
+  --fourth-color: #FC913A;
+  --fifth-color: #FF4E50;
+}
+html, body, .container-fluid{
+  height: 100%;
+}
+body {
+  /*padding: 50px;*/
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+  background-color: var(--fourth-color);
+}
+button:hover{
+  cursor: pointer;
+}
+.primary-button{
+  background-color: #34495e;
+  color: #fff;
+
+  /*margin-bottom: 1px;*/
+}
+.primary-button:hover{
+  /*background-color: #9b59b6;*/
+  background-color: #2c3e50;
+  color: #fff;
+}
+.center-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#create-account, #login, #create-post, #logout{
+  height: 50px;
+  /*font-size: 25px;*/
+  font-size: 1.5em;
+  margin-bottom: 1px;
+  border: none;
+}
+#logout{
+  width: 100%;
+}
+#create-post-modal textarea#post-body{
+  resize: vertical;
+}
+#social-media{
+  display: flex;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+#social-media li a{
+  font-size: 1.5em;
+  color: #FFFFEF;
+  height: 50px;
+  width: 50px;
+}
+#social-media #facebook{
+  background-color: #2980b9;
+}
+#social-media #instagram{
+  background-color: #2c3e50;
+}
+#social-media #github{
+  background-color: #24292E;
+}
+.post-content{
+  background-color: var(--first-color);
+  padding: 20px;
+}
+#posts{
+  list-style: none;
+  padding-left: 0;
+}
+#posts li{
+  margin-bottom: 5px;
+}
+#posts .post-content{
+  margin: 0;
+  padding: 20px;
+}
+.vote button{
+  outline: none;
+  border: none;
+  background-color: #34495e;
+  color: white;
+  padding: 10px;
+  font-size: 1.5em;
+}
+.vote #upvote{
+  background-color: #27ae60;
+}
+.vote #downvote{
+  background-color: #c0392b;
+}
+
+.row{
+  margin: 0;
+}

@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1= title
+
+  ul#posts
+    each post in posts
+      li.row.no-gutter
+        h4.post-content.col-10
+          a(href=post.url) #{post.postTitle}
+        form(action='#', method='POST').vote.col-2.row.no-gutter
+          button#upvote.col(name='upvote', type='submit') +#{post.upvotes.length}
+          button#downvote.col(name='downvote', type='submit') -#{post.downvotes.length}
+
+block portal
+  div#portal.d-flex.flex-column
+    if user
+      h3 Hello, #{user.username}
+      button#create-post.btn.btn-primary.primary-button(data-toggle="modal" data-target="#create-post-modal") Create a new post!
+      form#logout-form(action="/logout", method="POST")
+        button#logout.btn.btn-danger(type="submit") Logout
+
+    else
+      button#create-account.btn.btn-primary.primary-button(data-toggle="modal" data-target="#portal-modal", data-type="create-account") Create Account
+      button#login.btn.btn-primary.primary-button(data-toggle="modal" data-target="#portal-modal", data-type="login") Log In

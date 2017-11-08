@@ -1,0 +1,66 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css", integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb", crossorigin="anonymous")
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js", integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", crossorigin="anonymous")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js", integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh", crossorigin="anonymous")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js", integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ", crossorigin="anonymous")
+  body
+    div.container-fluid.d-flex.flex-column.justify-content-center
+      div.row.align-content-center
+        div.col-lg-9
+          block content
+        div.col-lg-3.align-self-center.sticky-top
+          block portal
+          ul#social-media
+            li
+              a#facebook.center-content(href="http://www.facebook.com", target="_blank", role="button")
+                i.fa.fa-facebook
+            li
+              a#instagram.center-content(href="http://www.instagram.com", target="_blank", role="button")
+                i.fa.fa-instagram
+            li
+              a#github.center-content(href="http://www.github.com", target="_blank", role="button")
+                i.fa.fa-github
+
+    div.modal.fade#portal-modal(tabindex="-1", role="dialog")
+      div.modal-dialog(role="document")
+        div.modal-content
+          div.modal-header
+            h4.modal-title Placeholder Title
+          div.modal-body
+            form#portal-form(action='/placeholder', method='POST')
+              div.form-group
+                label.col-form-label(for="username") Username
+                input.form-control#username(type="text", name="username", required=true)
+
+              div.form-group
+                label.col-form-label(for="password") Password
+                input.form-control#password(type="password", name="password", required=true)
+
+          div.modal-footer
+            button.btn.btn-secondary(data-dismiss="modal") Close
+            button.btn.btn-primary.primary-button(type="submit", form="portal-form") Submit
+
+    div.modal.fade#create-post-modal(tabindex="-1", role="dialog")
+      div.modal-dialog(role="document")
+        div.modal-content
+          div.modal-header
+            h4.modal-title Create a new post!
+          div.modal-body
+            form#create-post-form(action='/create', method='POST')
+              div.form-group
+                input.form-control#post-title(name="post-title", required=true, placeholder="Title")
+                br
+                textarea.form-control#post-body(name="post-body", rows="5", required=true, placeholder="Enter text here...")
+          div.modal-footer
+            button.btn.btn-secondary(data-dismiss="modal") Close
+            button.btn.btn-primary.primary-button(type="submit", form="create-post-form") Submit
+
+
+    script(src='javascripts/script.js')
