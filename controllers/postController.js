@@ -1,10 +1,25 @@
 const Post = require('../models/post');
 
-exports.posts_get= function(req, res, next){
-  Post.getPosts(req.requestedUser, function(err, posts){
+exports.user_posts_get= function(req, res, next){
+  const User = require('../models/user');
+
+  User.findOne({username:req.params.user}, 'username', function(err, user){
     if(err){return next(err);}
-    // console.log(posts);
-    res.render('index',{title: req.requestedUser?req.requestedUser.username:'all', user: req.user, posts: posts});
+    if(!user){return next(new Error('Sorry, user does not exist!'));}
+    
+    Post.getPosts(user, function(err, posts){
+      if(err){return next(err);}
+
+      res.render('index',{title: user.username, user: req.user, posts: posts});
+    });
+  });
+};
+
+exports.all_posts_get= function(req, res, next){
+  Post.getPosts(null, function(err, posts){
+    if(err){return next(err);}
+
+    res.render('index',{title: 'all', user: req.user, posts: posts});
   });
 };
 
@@ -24,8 +39,6 @@ exports.post_get = function(req, res, next){
     if(err){return next(err);}
     if(!post){return next(new Error('Sorry, no such post exists!'));}
 
-    // res.send(post.postTitle);
-    // req.session.previousPostId = post._id;
     res.render('post', {user:req.user, post: post});
   });
 };

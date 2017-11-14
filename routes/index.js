@@ -9,20 +9,9 @@ router.get('/', post_controller.random_post_get);
 
 router.get('/post/random', post_controller.random_post_get);
 
-router.get('/all', post_controller.posts_get);
+router.get('/all', post_controller.all_posts_get);
 
-router.get('/user/:user',
-  function(req, res, next){ //converts user URL parameter to corresponding user object for next middleware
-    const User = require('../models/user');
-
-    User.findOne({username:req.params.user}, 'username', function(err, user){
-      if(err){return next(err);}
-      if(!user){return next(new Error('Sorry, user does not exist!'));}
-      req.requestedUser = user;
-      return next();
-    });
-  },
-  post_controller.posts_get);
+router.get('/user/:user', post_controller.user_posts_get);
 
 router.get('/post/:id', post_controller.post_get);
 

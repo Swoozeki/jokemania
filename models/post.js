@@ -16,6 +16,7 @@ PostSchema.statics.getPosts = function(user, callback){
     .populate('user')
     .exec(function(err, posts){
       if(err){return callback(err);}
+      console.log(posts);
       callback(null, posts);
     });
 };
@@ -27,6 +28,7 @@ PostSchema.statics.getPost = function(postId, callback){
     .populate('user')
     .exec(function(err, post){
       if(err){return callback(err);}
+
       callback(null, post);
     });
 };
