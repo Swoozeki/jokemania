@@ -20,6 +20,10 @@ button:hover{
 .row{
   margin: 0;
 }
+#layout > div{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .primary-button{
   background-color: #34495e;
   color: #fff;

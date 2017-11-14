@@ -12,7 +12,7 @@ html
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js", integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ", crossorigin="anonymous")
   body
     div.container-fluid.d-flex.flex-column.justify-content-center
-      div.row.align-content-center
+      div#layout.row.align-content-center
         div.col-lg-9
           block content
         div.col-lg-3.align-self-center.sticky-top
@@ -34,7 +34,7 @@ html
           div.modal-header
             h4.modal-title Placeholder Title
           div.modal-body
-            form#portal-form(action='/placeholder', method='POST')
+            form#portal-form(action='/login', method='POST')
               div.form-group
                 label.col-form-label(for="username") Username
                 input.form-control#username(type="text", name="username", required=true)
