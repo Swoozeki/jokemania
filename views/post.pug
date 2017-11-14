@@ -1,10 +1,10 @@
 extends layout
 
 block content
-  div.post-content
+  div#post
     h1= post.postTitle
     hr
-    pre= post.postBody
+    p= post.postBody
     | - 
     a(href=post.user.url) #{post.user.username}
 

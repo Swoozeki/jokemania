@@ -75,10 +75,16 @@ button:hover{
 #social-media #github{
   background-color: #24292E;
 }
-.post-content{
+#post, #posts{
   background-color: #E1F5C4; /* fallback color */
   background-color: var(--first-color);
   padding: 20px;
+  white-space: pre-wrap;
+}
+#post > p{
+  font-size: 90%;
+  color: #212529;
+  font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 }
 #posts{
   list-style: none;
