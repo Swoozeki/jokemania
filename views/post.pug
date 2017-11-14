@@ -9,8 +9,8 @@ block content
     a(href='/user' + post.user.url) #{post.user.username}
 
   div#options.row.no-gutters
-    button#upvote.vote.col-4.col-md-2(data-postid=post._id) +#{post.upvotes.length}
-    button#downvote.vote.col-4.col-md-2(data-postid=post._id) -#{post.downvotes.length}
+    button#upvote.vote.col-4.col-md-2(class=user?'':'disallowed', data-postid=post._id) +#{post.upvotes.length}
+    button#downvote.vote.col-4.col-md-2(class=user?'':'disallowed', data-postid=post._id) -#{post.downvotes.length}
     
     a#next.col-4.col-md-2.ml-auto(href='/') Next
       //- i.fa.fa-arrow-right

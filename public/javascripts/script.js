@@ -15,10 +15,11 @@ modal.on('show.bs.modal', function(event){
 });
 
 $('.vote').on('click', function(e){
+  if(this.classList.contains('disallowed')) return false; //return false if user is not allowed to vote.
   const postId = this.dataset.postid;
   const vote = this.id;
 
-  $.post(`/${postId}/${vote}`, function(response){
+  $.post(`/post/${postId}/${vote}`, function(response){
     $('#upvote').html(`+${response.upvotes}`);
     $('#downvote').html(`-${response.downvotes}`);
   });
@@ -27,4 +28,13 @@ $('.vote').on('click', function(e){
 $('#next').on('click', function(e){
   console.log('next was just clicked!');
   $.get('/');
+});
+
+$('.vote').popover({content:'You must log in to vote!', placement: 'bottom', trigger: 'manual'});
+
+$('.vote').on('mouseenter', function(e){
+  if(this.classList.contains('disallowed')) $(this).popover('show');
+});
+$('.vote').on('mouseleave', function(e){
+  if(this.classList.contains('disallowed')) $(this).popover('hide');
 });
