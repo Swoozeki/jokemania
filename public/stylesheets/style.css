@@ -12,6 +12,7 @@ body {
   /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
+  background-color: #FC913A; /* fallback color */
   background-color: var(--fourth-color);
 }
 button:hover{
@@ -75,6 +76,7 @@ button:hover{
   background-color: #24292E;
 }
 .post-content{
+  background-color: #E1F5C4; /* fallback color */
   background-color: var(--first-color);
   padding: 20px;
 }
