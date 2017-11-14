@@ -14,7 +14,7 @@ exports.random_post_get = function(req, res, next){
     const random = Math.floor(Math.random()* count);
 
     Post.findOne().skip(random).exec(function(err, post){
-      res.redirect(`/${post._id}`);
+      res.redirect(`/post/${post._id}`);
     });
   });
 };
@@ -25,6 +25,7 @@ exports.post_get = function(req, res, next){
     if(!post){return next(new Error('Sorry, no such post exists!'));}
 
     // res.send(post.postTitle);
+    // req.session.previousPostId = post._id;
     res.render('post', {user:req.user, post: post});
   });
 };
@@ -45,3 +46,37 @@ exports.post_post = function(req, res, next){
     });
   }
 };
+
+/*
+  Store and update a vote
+*/
+exports.post_vote_post = function(req, res, next){
+  if(!req.user) return res.send(false);
+  Post.findById(req.params.id)
+    .exec(function(err, post){
+      if(err){return next(err);}
+      if(!post){return next(new Error('Could not find the post. Sorry, it mustve been deleted!'));}
+
+      const userIndexUpvotes = post.upvotes.indexOf(req.user._id);
+      const userIndexDownvotes = post.downvotes.indexOf(req.user._id);
+
+      if(req.params.vote === 'upvote'){
+        if(userIndexUpvotes>=0) post.upvotes.splice(userIndexUpvotes, 1);
+        else{
+          if(userIndexDownvotes>=0) post.downvotes.splice(userIndexDownvotes, 1);
+          post.upvotes.push(req.user._id);
+        }
+      }else if(req.params.vote === 'downvote'){
+        if(userIndexDownvotes>=0) post.downvotes.splice(userIndexDownvotes, 1);
+        else{
+          if(userIndexUpvotes>=0) post.upvotes.splice(userIndexUpvotes, 1);
+          post.downvotes.push(req.user._id);
+        }
+      }
+
+      post.save(function(err){
+        if(err){return next(err);}
+        return res.send({upvotes:post.upvotes.length, downvotes: post.downvotes.length});
+      });
+    });
+}

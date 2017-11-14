@@ -17,14 +17,14 @@ body {
 button:hover{
   cursor: pointer;
 }
+.row{
+  margin: 0;
+}
 .primary-button{
   background-color: #34495e;
   color: #fff;
-
-  /*margin-bottom: 1px;*/
 }
 .primary-button:hover{
-  /*background-color: #9b59b6;*/
   background-color: #2c3e50;
   color: #fff;
 }
@@ -36,7 +36,6 @@ button:hover{
 
 #create-account, #login, #create-post, #logout{
   height: 50px;
-  /*font-size: 25px;*/
   font-size: 1.5em;
   margin-bottom: 1px;
   border: none;
@@ -74,30 +73,28 @@ button:hover{
 }
 #posts{
   list-style: none;
-  padding-left: 0;
+  /* padding-left: 0; */
 }
 #posts li{
   margin-bottom: 5px;
 }
-#posts .post-content{
-  margin: 0;
-  padding: 20px;
+.options{
+  padding: 0;
 }
-.vote button{
+.vote, #next{
   outline: none;
   border: none;
   background-color: #34495e;
   color: white;
-  padding: 10px;
   font-size: 1.5em;
 }
-.vote #upvote{
+.vote#upvote{
   background-color: #27ae60;
 }
-.vote #downvote{
+.vote#downvote{
   background-color: #c0392b;
 }
-
-.row{
-  margin: 0;
+#next{
+  text-decoration: none;
+  text-align: center;
 }

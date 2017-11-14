@@ -13,3 +13,18 @@ modal.on('show.bs.modal', function(event){
     // history.pushState(null, null, 'login');
   }
 });
+
+$('.vote').on('click', function(e){
+  const postId = this.dataset.postid;
+  const vote = this.id;
+
+  $.post(`/${postId}/${vote}`, function(response){
+    $('#upvote').html(`+${response.upvotes}`);
+    $('#downvote').html(`-${response.downvotes}`);
+  });
+});
+
+$('#next').on('click', function(e){
+  console.log('next was just clicked!');
+  $.get('/');
+});

@@ -5,10 +5,15 @@ block content
     h1= post.postTitle
     hr
     pre= post.postBody
-    a(href='/all' + post.user.url) - #{post.user.username}
-  form(action='#', method='POST').vote.row.no-gutters
-    button#upvote.col-2(name='upvote', type='submit') +#{post.upvotes.length}
-    button#downvote.col-2(name='downvote', type='submit') -#{post.downvotes.length}
+    | -
+    a(href='/user' + post.user.url) #{post.user.username}
+
+  div#options.row.no-gutters
+    button#upvote.vote.col-4.col-md-2(data-postid=post._id) +#{post.upvotes.length}
+    button#downvote.vote.col-4.col-md-2(data-postid=post._id) -#{post.downvotes.length}
+    
+    a#next.col-2.ml-auto(href='/') Next
+      //- i.fa.fa-arrow-right
 
 block portal
   div#portal.d-flex.flex-column

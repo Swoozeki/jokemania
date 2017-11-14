@@ -34,7 +34,7 @@ PostSchema.statics.getPost = function(postId, callback){
 PostSchema
   .virtual('url')
   .get(function(){
-    return `/${this._id}`;
+    return `/post/${this._id}`;
   });
 
 module.exports = mongoose.model('Post', PostSchema);

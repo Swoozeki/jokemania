@@ -41,7 +41,7 @@ UserSchema.statics.authenticate = function(username, password, callback){
 UserSchema
   .virtual('url')
   .get(function(){
-    return `/${this.username}`;
+    return `/user/${this.username}`;
   })
 
 module.exports= mongoose.model('User', UserSchema);

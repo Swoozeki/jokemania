@@ -3,14 +3,11 @@ extends layout
 block content
   h1= title
 
-  ul#posts
+  ul#posts.post-content
     each post in posts
-      li.row.no-gutter
-        h4.post-content.col-10
+      li
+        p.h4
           a(href=post.url) #{post.postTitle}
-        form(action='#', method='POST').vote.col-2.row.no-gutter
-          button#upvote.col(name='upvote', type='submit') +#{post.upvotes.length}
-          button#downvote.col(name='downvote', type='submit') -#{post.downvotes.length}
 
 block portal
   div#portal.d-flex.flex-column

@@ -7,11 +7,11 @@ var user_controller = require('../controllers/userController');
 /* GET home page. */
 router.get('/', post_controller.random_post_get);
 
-router.get('/random', post_controller.random_post_get);
+router.get('/post/random', post_controller.random_post_get);
 
 router.get('/all', post_controller.posts_get);
 
-router.get('/all/:user',
+router.get('/user/:user',
   function(req, res, next){ //converts user URL parameter to corresponding user object for next middleware
     const User = require('../models/user');
 
@@ -24,8 +24,9 @@ router.get('/all/:user',
   },
   post_controller.posts_get);
 
-router.get('/:id', post_controller.post_get);
+router.get('/post/:id', post_controller.post_get);
 
+router.post('/post/:id/:vote', post_controller.post_vote_post);
 
 router.post('/register', user_controller.register_user_post);
 
