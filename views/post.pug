@@ -5,8 +5,8 @@ block content
     h1= post.postTitle
     hr
     pre= post.postBody
-    | -
-    a(href='/user' + post.user.url) #{post.user.username}
+    | - 
+    a(href=post.user.url) #{post.user.username}
 
   div#options.row.no-gutters
     button#upvote.vote.col-4.col-md-2(class=user?'':'disallowed', data-postid=post._id) +#{post.upvotes.length}

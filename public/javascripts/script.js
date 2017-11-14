@@ -25,11 +25,6 @@ $('.vote').on('click', function(e){
   });
 });
 
-$('#next').on('click', function(e){
-  console.log('next was just clicked!');
-  $.get('/');
-});
-
 $('.vote').popover({content:'You must log in to vote!', placement: 'bottom', trigger: 'manual'});
 
 $('.vote').on('mouseenter', function(e){
